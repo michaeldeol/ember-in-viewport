@@ -10,12 +10,7 @@ const defaultTolerance = {
 
 const isAxisInViewport = function(start, startTolerance, end, endTolerance, limit) {
   // Dimensions are fully LARGER than the viewport or fully WITHIN the viewport.
-  // const exceedingLimit = (end + endTolerance) - (start + startTolerance) > limit;
-  const exceedingLimit = (start + startTolerance) >= 0 &&
-                         (end + endTolerance) >= 0 &&
-                         (Math.round(end) - endTolerance) <= Math.round(limit);
-
-
+  const exceedingLimit = (Math.round(end) + endTolerance) - (Math.round(start) + startTolerance) > limit;
 
   if (exceedingLimit) {
     return start <= startTolerance && (end - endTolerance) >= limit;
